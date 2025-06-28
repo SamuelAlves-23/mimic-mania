@@ -13,3 +13,21 @@ config_version=5
 config/name="Mimic Mania"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=360
+window/size/window_width_override=1720
+window/size/window_height_override=1168
+window/stretch/mode="canvas_items"
+
+[layer_names]
+
+2d_physics/layer_1="world"
+2d_physics/layer_2="player"
+2d_physics/layer_3="interative"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
