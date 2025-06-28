@@ -8,12 +8,12 @@ class_name Chest
 
 @onready var random_value
 
-@onready var battle_scene : PackedScene = preload("res://scenes/battle_scene.tscn")
+#@onready var battle_scene : PackedScene = preload("res://scenes/battle_scene.tscn")
 
 func interact() -> bool:
 	if !open:
 		open = true
-		print("El cofre se ha habierto.")
+		print("El cofre se ha abierto.")
 		var reward: String = _calculate_reward()
 		match reward:
 			"gold":
@@ -40,8 +40,8 @@ func interact() -> bool:
 			"mimic":
 				GlobalManager.mimic_chain += 1
 				print("Oh no, un mímico!")
-				var battle = battle_scene.instantiate()
-				add_child(battle)
+				#var battle = battle_scene.instantiate()
+				#add_child(battle)
 				animator.play("mimic")
 		
 	return true
@@ -49,7 +49,7 @@ func interact() -> bool:
 func _calculate_reward() -> String:
 	var total_weight = 100
 	#random_value = randi() % total_weight
-	random_value = 100
+	random_value = 99
 	var current_weight = 0
 	var reward_chances: Dictionary = GlobalManager.get_reward_chances()
 	for weight in reward_chances.values():
