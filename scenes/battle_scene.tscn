@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbr7f7kcabl50"]
+
+[ext_resource type="Script" uid="uid://5x81m8w5mbpy" path="res://scenes/battle_scene.gd" id="1_idkgt"]
+
+[node name="BattleScene" type="Window"]
+size = Vector2i(700, 500)
+script = ExtResource("1_idkgt")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node2D"]
+
+[node name="Label" type="Label" parent="Node2D/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "HP"

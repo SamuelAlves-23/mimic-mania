@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtiytoj1ipbae"]
+
+[ext_resource type="Texture2D" uid="uid://dh1vuphg247p4" path="res://assets/2D Pixel Dungeon Asset Pack/Character_animation/priests_idle/priest2/v1/priest2_v1_1.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://b25axox4piloj" path="res://scenes/player/player.gd" id="1_dovo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
+size = Vector2(16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dovo2"]
+font_size = 10
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gmlin"]
+size = Vector2(8, 8)
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_dovo2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8afob")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dovo2")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RayCast" type="RayCast2D" parent="."]
+target_position = Vector2(16, 0)
+collision_mask = 5
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = -10.0
+text = "INTERACT"
+label_settings = SubResource("LabelSettings_dovo2")
+
+[node name="InteractiveArea" type="Area2D" parent="."]
+position = Vector2(16, 0)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea"]
+shape = SubResource("RectangleShape2D_gmlin")
+
+[connection signal="body_entered" from="InteractiveArea" to="." method="_on_interactive_area_body_entered"]
+[connection signal="body_exited" from="InteractiveArea" to="." method="_on_interactive_area_body_exited"]
