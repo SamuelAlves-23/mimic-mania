@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://bk1m8mpykdgvm"]
+
+[ext_resource type="Script" uid="uid://bbb1tytuvt3hn" path="res://items/stat_item.gd" id="1_h8nvg"]
+[ext_resource type="Texture2D" uid="uid://cajwhs648wuxe" path="res://assets/All Potions/Blue potions/blue_potion.png" id="2_du7uo"]
+[ext_resource type="AudioStream" uid="uid://bii4ith5txtk2" path="res://assets/sfx/potion.mp3" id="3_tf1nr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_du7uo"]
+font_size = 10
+
+[sub_resource type="Animation" id="Animation_tf1nr"]
+resource_name = "basic"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_bs5jw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3jh1"]
+_data = {
+&"RESET": SubResource("Animation_bs5jw"),
+&"basic": SubResource("Animation_tf1nr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_du7uo"]
+size = Vector2(16, 16)
+
+[node name="StatItem" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_h8nvg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_du7uo")
+hframes = 3
+vframes = 3
+
+[node name="PriceLabel" type="Label" parent="."]
+offset_left = -12.0
+offset_top = -22.0
+offset_right = 13.0
+offset_bottom = -8.0
+text = "price"
+label_settings = SubResource("LabelSettings_du7uo")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_i3jh1")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_du7uo")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_tf1nr")

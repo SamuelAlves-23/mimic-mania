@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg57pbjbo5igc"]
+[gd_scene load_steps=7 format=3 uid="uid://dg57pbjbo5igc"]
 
 [ext_resource type="PackedScene" uid="uid://c07eyiv3gfsj0" path="res://tiles/tile_map_layer.tscn" id="1_i02kc"]
 [ext_resource type="PackedScene" uid="uid://dtiytoj1ipbae" path="res://scenes/player/player.tscn" id="2_msnmn"]
 [ext_resource type="PackedScene" uid="uid://bwhp57f7n56pq" path="res://scenes/chest/chest.tscn" id="3_msnmn"]
+[ext_resource type="PackedScene" uid="uid://bk1m8mpykdgvm" path="res://items/stat_item.tscn" id="4_mfpcw"]
+[ext_resource type="Texture2D" uid="uid://cehdhta6ud4u0" path="res://assets/All Potions/Red potions/red_potion.png" id="5_mngvo"]
+[ext_resource type="Texture2D" uid="uid://dhn7vavrd2jrt" path="res://assets/All Potions/Yellow potions/yellow_potion.png" id="6_ya7hd"]
 
 [node name="ChestRoom" type="Node2D"]
 
@@ -154,3 +157,34 @@ position = Vector2(264, 184)
 
 [node name="Chest54" parent="." instance=ExtResource("3_msnmn")]
 position = Vector2(312, 184)
+
+[node name="DefenseBottle" parent="." instance=ExtResource("4_mfpcw")]
+position = Vector2(280, 536)
+price = 30
+stat = "defense"
+reward = 5
+mult = 1.2
+
+[node name="HpBottle" parent="." instance=ExtResource("4_mfpcw")]
+position = Vector2(280, 504)
+price = 20
+stat = "hp"
+reward = 20
+mult = 1.2
+
+[node name="Sprite2D" parent="HpBottle" index="0"]
+texture = ExtResource("5_mngvo")
+
+[node name="AttackBottle" parent="." instance=ExtResource("4_mfpcw")]
+position = Vector2(280, 472)
+price = 30
+stat = "attack"
+reward = 5
+mult = 1.5
+
+[node name="Sprite2D" parent="AttackBottle" index="0"]
+texture = ExtResource("6_ya7hd")
+
+[editable path="DefenseBottle"]
+[editable path="HpBottle"]
+[editable path="AttackBottle"]

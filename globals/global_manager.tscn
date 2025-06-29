@@ -1,6 +1,107 @@
-[gd_scene load_steps=2 format=3 uid="uid://7xlqdlfodnl4"]
+[gd_scene load_steps=6 format=3 uid="uid://7xlqdlfodnl4"]
 
 [ext_resource type="Script" uid="uid://bv15kr6n4i48v" path="res://globals/global_manager.gd" id="1_q5ulb"]
+[ext_resource type="AudioStream" uid="uid://dinmeot165mtp" path="res://assets/sfx/hit_flesh.mp3" id="2_leor5"]
+[ext_resource type="AudioStream" uid="uid://7sjymep8hmlj" path="res://assets/sfx/hit_rock.mp3" id="3_dnbjj"]
+[ext_resource type="AudioStream" uid="uid://b2e3xlco8jt4e" path="res://assets/sfx/Kingdom Hearts Re_Coded Soundtrack - Castle Oblivion [5Wv6XBaUuTc].mp3" id="4_dnbjj"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_2qeol"]
+stream_count = 2
+stream_0 = ExtResource("2_leor5")
+stream_1 = ExtResource("3_dnbjj")
 
 [node name="GlobalManager" type="Node"]
 script = ExtResource("1_q5ulb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "Estadísticas"
+
+[node name="HPLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="AttackLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="DefenseLAbel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+text = "_____________"
+
+[node name="GoldLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MimicChanceLabel" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MimicStatsContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -90.0
+offset_top = -65.5
+offset_bottom = 65.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MimicStatsContainer"]
+layout_mode = 2
+text = "Mímico"
+
+[node name="MimicHPLabel" type="Label" parent="CanvasLayer/MimicStatsContainer"]
+layout_mode = 2
+
+[node name="MimicAttackLabel" type="Label" parent="CanvasLayer/MimicStatsContainer"]
+layout_mode = 2
+
+[node name="MimiCDefenseLAbel" type="Label" parent="CanvasLayer/MimicStatsContainer"]
+layout_mode = 2
+
+[node name="EndContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/EndContainer"]
+layout_mode = 2
+text = "Retry"
+
+[node name="ChestsLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Cofres abiertos:"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamPlaylist_2qeol")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dnbjj")
+volume_db = -3.796
+autoplay = true
+
+[connection signal="pressed" from="CanvasLayer/EndContainer/RetryButton" to="." method="_on_retry_button_pressed"]

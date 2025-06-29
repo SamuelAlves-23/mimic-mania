@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwhp57f7n56pq"]
+[gd_scene load_steps=10 format=3 uid="uid://bwhp57f7n56pq"]
 
 [ext_resource type="Texture2D" uid="uid://8tcr2k24w3pu" path="res://assets/aseprite/Chest.png" id="1_3se45"]
 [ext_resource type="Script" uid="uid://dbh6dixtm2th3" path="res://scenes/chest/chest.gd" id="1_uih34"]
+[ext_resource type="AudioStream" uid="uid://dwaqhsx5ipty5" path="res://assets/sfx/chest_open.mp3" id="3_m5ma0"]
 
 [sub_resource type="Animation" id="Animation_m5ma0"]
 length = 0.001
@@ -108,6 +109,7 @@ libraries = {
 autoplay = "closed"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_m5ma0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uih34")
